@@ -50,6 +50,7 @@ import javax.microedition.khronos.opengles.GL10;
  * apply the touch and sensor rotations in the correct order or the user's touch manipulations won't
  * match what they expect.
  */
+ 
 public final class MonoscopicView extends GLSurfaceView {
   // We handle all the sensor orientation detection ourselves.
   private SensorManager sensorManager;

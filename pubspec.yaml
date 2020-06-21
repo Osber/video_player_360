@@ -4,7 +4,7 @@ version: 0.1.4
 homepage: https://github.com/innovationmauritiustelecom/video_player_360
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -26,7 +26,6 @@ flutter:
   plugin:
     androidPackage: com.example.video_player_360
     pluginClass: VideoPlayer360Plugin
-
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
@@ -37,7 +36,6 @@ flutter:
   #
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # To add custom fonts to your plugin package, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
