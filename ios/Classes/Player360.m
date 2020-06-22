@@ -6,7 +6,8 @@
 //
 
 #import "Player360.h"
-#import "VideoPlayerViewController.h"
+
+
 
 @implementation Player360 {
   NSObject<FlutterBinaryMessenger>* _messenger;
@@ -78,7 +79,7 @@
 }
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSLog(@"Call");
+    NSLog(@"++++++++++++++++++++++++");
     
   if ([@"playvideo" isEqualToString:call.method]) {
       NSLog(@"++++++++++++++++++++++++");
@@ -92,11 +93,8 @@
       
       if (video_url != nil) {
           NSURL *url = [[NSURL alloc] initWithString:video_url];
-           NSLog(@"++++++++++++++++++++++++");
-          NSLog(@"%@", url);
+          
           if (url != nil) {
-              NSLog(@"++++++++++++++++++++++++");
-                      NSLog(@"%@", url);
               _viewController.videoURL = url;
               _viewController.radius = radius;
               _viewController.verticalFov = verticalFov;
@@ -104,9 +102,10 @@
               _viewController.rows = rows;
               _viewController.columns = columns;
               _viewController.showPlaceholder = showPlaceholder;
+              // [_viewController updatePlayerWithURL:url];
           }
       }
-
+      
   } else {
     result(FlutterMethodNotImplemented);
   }

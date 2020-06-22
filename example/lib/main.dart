@@ -40,11 +40,11 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('360 Video Player Flutter'),
         ),
-        body: Container(
-          height: 500,
-          width: 500,
-          child: player360,
-        ),
+        body: Column(children: [
+          Expanded(
+            child: player360,
+          )
+        ]),
         floatingActionButton: FloatingActionButton(
           onPressed: playVideo,
           child: Icon(Icons.play_arrow),

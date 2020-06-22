@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
-#import <GVRKit/GVRKit.h>
+
 
 #import "VideoPlayerViewController.h"
 
 @interface VideoPlayerViewController ()<GVRRendererViewControllerDelegate>
-@property (nonatomic) IBOutlet GVRRendererView *videoView;
+
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loader;
 @property (weak, nonatomic) IBOutlet UIView *tiltView;
@@ -15,13 +15,14 @@
 
 @implementation VideoPlayerViewController
 
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-    // NSURL *videoURL = [NSURL URLWithString:@"http://196.192.110.79:1935/test/videoplay/playlist.m3u8"];
+    NSURL *felix = [NSURL URLWithString:@"https://video.felixsmart.com:9443/vod/_definst_/mp4:40A36BC38F2D/40A36BC38F2D1592246163170/playlist.m3u8?token=16eaa183-d548-475c-ad07-7b1c61e31dde"];
     [_loader startAnimating];
       
-    _player = [AVPlayer playerWithURL:_videoURL];
+    _player = [AVPlayer playerWithURL:felix];
     _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemDidReachEnd:)
@@ -41,6 +42,24 @@
     [self hideTiltView];
 }
 
+- (void)updatePlayerWithURL:(NSURL *)url {
+    NSLog(@"updatePlayerUrl");
+    [_loader startAnimating];
+    
+    _player = [AVPlayer playerWithURL:url];
+    _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[_player currentItem]];
+
+  
+    GVRRendererViewController *viewController = self.childViewControllers[0];
+    GVRSceneRenderer *sceneRenderer = (GVRSceneRenderer *)viewController.rendererView.renderer;
+    GVRVideoRenderer *videoRenderer = [sceneRenderer.renderList objectAtIndex:0];
+    videoRenderer.player = _player;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
@@ -52,6 +71,8 @@
     
     [self removeObservers];
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   [super prepareForSegue:segue sender:sender];
