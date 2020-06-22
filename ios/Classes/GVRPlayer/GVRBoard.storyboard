@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0oT-3f-23W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0oT-3f-23W">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,13 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAh-MU-r3S">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="942"/>
-                                <connections>
-                                    <segue destination="vOH-0Y-5a7" kind="embed" id="Ej0-sq-dSE"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-vf-eTe">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-vf-eTe">
                                 <rect key="frame" x="0.0" y="920" width="600" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBq-d4-xID">
@@ -60,6 +54,12 @@
                                     <constraint firstItem="WA1-yb-l77" firstAttribute="leading" secondItem="C3H-vf-eTe" secondAttribute="leading" constant="8" id="tNH-74-2yf"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAh-MU-r3S">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                                <connections>
+                                    <segue destination="vOH-0Y-5a7" kind="embed" id="Ej0-sq-dSE"/>
+                                </connections>
+                            </containerView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="f4B-YI-JyM">
                                 <rect key="frame" x="20" y="64" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,13 +94,13 @@
                             <constraint firstAttribute="trailing" secondItem="vAh-MU-r3S" secondAttribute="trailing" id="4Av-KZ-xU6"/>
                             <constraint firstAttribute="trailing" secondItem="C3H-vf-eTe" secondAttribute="trailing" id="7X5-qg-lOO"/>
                             <constraint firstItem="pDm-XO-iWx" firstAttribute="centerY" secondItem="pap-fa-Xeh" secondAttribute="centerY" id="8Jk-PQ-jBB"/>
+                            <constraint firstAttribute="bottom" secondItem="vAh-MU-r3S" secondAttribute="bottom" id="8ri-Wt-0If"/>
                             <constraint firstItem="f4B-YI-JyM" firstAttribute="top" secondItem="C32-Ct-liL" secondAttribute="bottom" constant="20" id="JNh-DW-SpQ"/>
                             <constraint firstItem="vAh-MU-r3S" firstAttribute="top" secondItem="pap-fa-Xeh" secondAttribute="top" id="Sft-Hu-xPU"/>
                             <constraint firstItem="vAh-MU-r3S" firstAttribute="leading" secondItem="pap-fa-Xeh" secondAttribute="leading" id="W6g-XZ-8gZ"/>
                             <constraint firstAttribute="bottom" secondItem="C3H-vf-eTe" secondAttribute="bottom" id="cfc-es-8dO"/>
                             <constraint firstItem="C3H-vf-eTe" firstAttribute="leading" secondItem="pap-fa-Xeh" secondAttribute="leading" id="uvv-6K-ubJ"/>
                             <constraint firstItem="pDm-XO-iWx" firstAttribute="centerX" secondItem="pap-fa-Xeh" secondAttribute="centerX" id="xmV-C0-hVo"/>
-                            <constraint firstItem="AiZ-ml-4EU" firstAttribute="top" secondItem="vAh-MU-r3S" secondAttribute="bottom" constant="24" id="yrC-Yl-KUH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Video" id="jld-qq-f3g"/>
@@ -125,7 +125,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9d5-Hw-t9v"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ufX-bj-cnV" customClass="GVRRendererView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="942"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
