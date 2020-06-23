@@ -60,10 +60,6 @@
                                     <segue destination="vOH-0Y-5a7" kind="embed" id="Ej0-sq-dSE"/>
                                 </connections>
                             </containerView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="f4B-YI-JyM">
-                                <rect key="frame" x="20" y="64" width="37" height="37"/>
-                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDm-XO-iWx">
                                 <rect key="frame" x="175" y="375" width="250" height="250"/>
                                 <subviews>
@@ -90,12 +86,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="f4B-YI-JyM" firstAttribute="leading" secondItem="pap-fa-Xeh" secondAttribute="leadingMargin" id="3Fj-xb-DUj"/>
                             <constraint firstAttribute="trailing" secondItem="vAh-MU-r3S" secondAttribute="trailing" id="4Av-KZ-xU6"/>
                             <constraint firstAttribute="trailing" secondItem="C3H-vf-eTe" secondAttribute="trailing" id="7X5-qg-lOO"/>
                             <constraint firstItem="pDm-XO-iWx" firstAttribute="centerY" secondItem="pap-fa-Xeh" secondAttribute="centerY" id="8Jk-PQ-jBB"/>
                             <constraint firstAttribute="bottom" secondItem="vAh-MU-r3S" secondAttribute="bottom" id="8ri-Wt-0If"/>
-                            <constraint firstItem="f4B-YI-JyM" firstAttribute="top" secondItem="C32-Ct-liL" secondAttribute="bottom" constant="20" id="JNh-DW-SpQ"/>
                             <constraint firstItem="vAh-MU-r3S" firstAttribute="top" secondItem="pap-fa-Xeh" secondAttribute="top" id="Sft-Hu-xPU"/>
                             <constraint firstItem="vAh-MU-r3S" firstAttribute="leading" secondItem="pap-fa-Xeh" secondAttribute="leading" id="W6g-XZ-8gZ"/>
                             <constraint firstAttribute="bottom" secondItem="C3H-vf-eTe" secondAttribute="bottom" id="cfc-es-8dO"/>
@@ -107,7 +101,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
-                        <outlet property="loader" destination="f4B-YI-JyM" id="ZzR-fw-nMG"/>
                         <outlet property="playPauseButton" destination="KBq-d4-xID" id="Bt2-A0-FNq"/>
                         <outlet property="tiltView" destination="pDm-XO-iWx" id="kg1-AR-bGl"/>
                     </connections>

@@ -6,7 +6,7 @@
 @interface VideoPlayerViewController ()<GVRRendererViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loader;
+
 @property (weak, nonatomic) IBOutlet UIView *tiltView;
 @property (nonatomic) AVPlayer *player;
 @property (nonatomic) NSBundle *bundle;
@@ -19,10 +19,10 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-    NSURL *felix = [NSURL URLWithString:@"https://video.felixsmart.com:9443/vod/_definst_/mp4:40A36BC38F2D/40A36BC38F2D1592246163170/playlist.m3u8?token=16eaa183-d548-475c-ad07-7b1c61e31dde"];
-    [_loader startAnimating];
+    // NSURL *felix = [NSURL URLWithString:@"https://video.felixsmart.com:9443/vod/_definst_/mp4:40A36BC38F2D/40A36BC38F2D1592246163170/playlist.m3u8?token=16eaa183-d548-475c-ad07-7b1c61e31dde"];
+    //[_loader startAnimating];
       
-    _player = [AVPlayer playerWithURL:felix];
+    _player = [AVPlayer playerWithURL:_videoURL];
     _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemDidReachEnd:)
@@ -44,8 +44,6 @@
 
 - (void)updatePlayerWithURL:(NSURL *)url {
     NSLog(@"updatePlayerUrl");
-    [_loader startAnimating];
-    
     _player = [AVPlayer playerWithURL:url];
     _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -209,15 +207,15 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([object isKindOfClass:[AVPlayerItem class]]) {
         if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
-            [_loader setHidden:FALSE];
+            //[_loader setHidden:FALSE];
             //NSLog(@"playbackBufferEmpty");
             
         } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
-            [_loader setHidden:TRUE];
+            //[_loader setHidden:TRUE];
             //NSLog(@"playbackLikelyToKeepUp");
 
         } else if ([keyPath isEqualToString:@"playbackBufferFull"]) {
-            [_loader setHidden:TRUE];
+            //[_loader setHidden:TRUE];
             //NSLog(@"playbackBufferFull");
             
         }

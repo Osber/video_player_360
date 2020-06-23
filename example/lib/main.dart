@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     void onPlayerCreated(VideoPlayer360 playerController) {
       this.playerController = playerController;
       this.playerController.getVideoScreen(
-          'https://video.felixsmart.com:9443/vod/_definst_/mp4:40A36BC38F2D/40A36BC38F2D1592246163170/playlist.m3u8?token=16eaa183-d548-475c-ad07-7b1c61e31dde');
+          'https://bitmovin.com/player-content/playhouse-vr/m3u8s/105560.m3u8');
     }
 
     void playVideo() {
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(children: [
           Expanded(
-            child: player360,
+            child: Container(width: double.infinity, child: player360),
           )
         ]),
         floatingActionButton: FloatingActionButton(

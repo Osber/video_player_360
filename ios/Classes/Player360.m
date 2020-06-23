@@ -34,7 +34,6 @@
                                            viewIdentifier:viewId
                                                 arguments:args
                                           binaryMessenger:_messenger];
-    
   return viewController;
 }
 
@@ -59,6 +58,13 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"GVRBoard" bundle:bundle];
       
     _viewController = (VideoPlayerViewController*)[storyBoard instantiateInitialViewController];
+      
+    _viewController.radius = 50;
+    _viewController.verticalFov = 180;
+    _viewController.horizontalFov = 360;
+    _viewController.rows = 50;
+    _viewController.columns = 50;
+    _viewController.showPlaceholder = false;
     
     NSString* channelName = [NSString stringWithFormat:@"player360_%lld", viewId];
       
@@ -84,25 +90,11 @@
   if ([@"playvideo" isEqualToString:call.method]) {
       NSLog(@"++++++++++++++++++++++++");
       NSString *video_url = call.arguments[@"video_url"];
-      int radius = [call.arguments[@"radius"] intValue];
-      int verticalFov = [call.arguments[@"verticalFov"] intValue];
-      int horizontalFov = [call.arguments[@"horizontalFov"] intValue];
-      int rows = [call.arguments[@"rows"] intValue];
-      int columns = [call.arguments[@"columns"] intValue];
-      bool showPlaceholder = [call.arguments[@"showPlaceholder"] boolValue];
-      
       if (video_url != nil) {
           NSURL *url = [[NSURL alloc] initWithString:video_url];
           
           if (url != nil) {
-              _viewController.videoURL = url;
-              _viewController.radius = radius;
-              _viewController.verticalFov = verticalFov;
-              _viewController.horizontalFov = horizontalFov;
-              _viewController.rows = rows;
-              _viewController.columns = columns;
-              _viewController.showPlaceholder = showPlaceholder;
-              // [_viewController updatePlayerWithURL:url];
+              [_viewController updatePlayerWithURL:url];
           }
       }
       
