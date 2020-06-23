@@ -6,7 +6,6 @@
 @interface VideoPlayerViewController ()<GVRRendererViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
-
 @property (weak, nonatomic) IBOutlet UIView *tiltView;
 @property (nonatomic) AVPlayer *player;
 @property (nonatomic) NSBundle *bundle;
@@ -20,25 +19,13 @@
   [super viewDidLoad];
 
     // NSURL *felix = [NSURL URLWithString:@"https://video.felixsmart.com:9443/vod/_definst_/mp4:40A36BC38F2D/40A36BC38F2D1592246163170/playlist.m3u8?token=16eaa183-d548-475c-ad07-7b1c61e31dde"];
-    //[_loader startAnimating];
       
-    _player = [AVPlayer playerWithURL:_videoURL];
-    _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[_player currentItem]];
-
-    GVRRendererViewController *viewController = self.childViewControllers[0];
-    GVRSceneRenderer *sceneRenderer = (GVRSceneRenderer *)viewController.rendererView.renderer;
-    GVRVideoRenderer *videoRenderer = [sceneRenderer.renderList objectAtIndex:0];
-    videoRenderer.player = _player;
+    [self updatePlayerWithURL: _videoURL];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"360_bundle" ofType:@"bundle"];
     _bundle = [NSBundle bundleWithPath:bundlePath];
     
     [self hideGVRButtons];
-    [self addObservers];
     [self hideTiltView];
 }
 
@@ -66,8 +53,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    //[self removeObservers];
 }
 
 
@@ -190,36 +175,6 @@
         self.videoView.overlayView.hidesFullscreenButton = true;
         self.videoView.overlayView.hidesSettingsButton = true;
     });
-}
-
-- (void)addObservers {
-    [_player.currentItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
-    [_player.currentItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
-    [_player.currentItem addObserver:self forKeyPath:@"playbackBufferFull" options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)removeObservers {
-    [_player.currentItem removeObserver:self forKeyPath:@"playbackBufferEmpty" context:nil];
-    [_player.currentItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp" context:nil];
-    [_player.currentItem removeObserver:self forKeyPath:@"playbackBufferFull" context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([object isKindOfClass:[AVPlayerItem class]]) {
-        if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
-            //[_loader setHidden:FALSE];
-            //NSLog(@"playbackBufferEmpty");
-            
-        } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
-            //[_loader setHidden:TRUE];
-            //NSLog(@"playbackLikelyToKeepUp");
-
-        } else if ([keyPath isEqualToString:@"playbackBufferFull"]) {
-            //[_loader setHidden:TRUE];
-            //NSLog(@"playbackBufferFull");
-            
-        }
-    }
 }
 
 - (void)hideTiltView {
