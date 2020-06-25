@@ -29,6 +29,11 @@
     [self hideTiltView];
 }
 
+- (void)playFromFlutter {
+    NSLog(@"play from flutter :D");
+    [_player play];
+}
+
 - (void)updatePlayerWithURL:(NSURL *)url {
     NSLog(@"updatePlayerUrl");
     _player = [AVPlayer playerWithURL:url];

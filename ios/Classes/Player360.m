@@ -97,8 +97,10 @@
               [_viewController updatePlayerWithURL:url];
           }
       }
-      
-  } else {
+  } else if ([@"play" isEqualToString:call.method]) {
+      [_viewController playFromFlutter];
+  }
+  else {
     result(FlutterMethodNotImplemented);
   }
 }

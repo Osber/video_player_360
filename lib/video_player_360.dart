@@ -27,8 +27,13 @@ class VideoPlayer360 {
   /// @param rows Number of rows that make up the sphere. Must be >= 1.
   /// @param columns Number of columns that make up the sphere. Must be >= 1.
   ///
+  ///
 
-  Future<void> getVideoScreen(
+  Future<void> playVideo() async {
+    return _playerChannel.invokeMethod("play");
+  }
+
+  Future<dynamic> getVideoScreen(
     String url, {
     int radius = 50,
     int verticalFov = 180,
@@ -37,15 +42,21 @@ class VideoPlayer360 {
     int columns = 50,
     bool showPlaceholder = false,
   }) async {
-    return _playerChannel.invokeMapMethod("playvideo", <String, dynamic>{
-      'video_url': url,
-      'radius': radius,
-      'verticalFov': verticalFov,
-      'horizontalFov': horizontalFov,
-      'rows': rows,
-      'columns': columns,
-      'showPlaceholder': showPlaceholder,
-    });
+    try {
+      final result =
+          await _playerChannel.invokeMapMethod("playvideo", <String, dynamic>{
+        'video_url': url,
+        'radius': radius,
+        'verticalFov': verticalFov,
+        'horizontalFov': horizontalFov,
+        'rows': rows,
+        'columns': columns,
+        'showPlaceholder': showPlaceholder,
+      });
+      return result;
+    } on PlatformException catch (e) {
+      return "Error from video player: '${e.message}'.";
+    }
   }
 
   static Future<void> playVideoURL(
