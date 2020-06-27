@@ -33,6 +33,10 @@ class VideoPlayer360 {
     return _playerChannel.invokeMethod("play");
   }
 
+  Future<dynamic> stopVideo() async {
+    return _playerChannel.invokeMethod("closeplayer");
+  }
+
   Future<dynamic> getVideoScreen(
     String url, {
     int radius = 50,

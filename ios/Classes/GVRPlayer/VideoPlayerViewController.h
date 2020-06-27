@@ -12,4 +12,5 @@
 @property(nonatomic, assign) bool showPlaceholder;
 - (void)updatePlayerWithURL:(NSURL *)url;
 - (void)playFromFlutter;
+- (void)closePlayer;
 @end

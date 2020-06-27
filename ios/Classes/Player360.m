@@ -99,6 +99,8 @@
       }
   } else if ([@"play" isEqualToString:call.method]) {
       [_viewController playFromFlutter];
+  } else if ([@"closeplayer" isEqualToString:call.method]) {
+      [_viewController closePlayer];
   }
   else {
     result(FlutterMethodNotImplemented);

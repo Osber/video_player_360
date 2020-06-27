@@ -34,6 +34,11 @@
     [_player play];
 }
 
+- (void)closePlayer {
+    NSLog(@"closePlayer");
+    _player = nil;
+}
+
 - (void)updatePlayerWithURL:(NSURL *)url {
     NSLog(@"updatePlayerUrl");
     _player = [AVPlayer playerWithURL:url];
